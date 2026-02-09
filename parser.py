@@ -46,7 +46,7 @@ def parse_course_type(cell_text: str) -> tuple[str, str, str]:
     return course_type, group, course_code
 
 
-def parse_table(html: str, tz: str) -> List[OrarendEvent]:
+def parse_table(html: str, tz: str, lecture_group_letter: str) -> List[OrarendEvent]:
     soup = BeautifulSoup(html, "html.parser")
     tables = soup.find_all("table")
     target = None
@@ -106,9 +106,10 @@ def parse_table(html: str, tz: str) -> List[OrarendEvent]:
         course_type_lower = course_type.lower()
         is_lecture = course_type_lower.startswith("lecture") or course_type_lower.startswith("előadás")
 
-        # For lectures, keep only groups containing letter K (case-insensitive)
-        if is_lecture:
-            if "k" not in group.lower():
+        group_letter = (lecture_group_letter or "").strip().lower()
+        # For lectures, keep only groups containing the configured letter (case-insensitive)
+        if is_lecture and group_letter:
+            if group_letter not in group.lower():
                 continue
 
         summary = subject_name
@@ -145,9 +146,11 @@ def parse_table(html: str, tz: str) -> List[OrarendEvent]:
     return out
 
 
-def parse_snapshot(path: str, tz: str = "Europe/Budapest") -> List[OrarendEvent]:
+def parse_snapshot(
+    path: str, tz: str = "Europe/Budapest", lecture_group_letter: str = "K"
+) -> List[OrarendEvent]:
     html = Path(path).read_text(encoding="utf-8", errors="replace")
-    return parse_table(html, tz)
+    return parse_table(html, tz, lecture_group_letter)
 
 
 if __name__ == "__main__":

@@ -26,6 +26,7 @@ Innentol ai a readme, have fun haverdak!
    - `credentials.username` és `credentials.password`.
    - `credentials.username_field` / `credentials.password_field`: ha a beviteli mezők neve eltér.
    - `calendar_id` vagy `calendar_name`: cél naptár azonosító vagy név.
+   - `lecture_group_letter`: Csak az ilyen csoportbetűs előadásokat tartja meg a script (pl. `K`). Ha üres, nincs szűrés.
    - Opcionális: `orarend_url`, ha az automatikus felismerés nem működik.
 4. Titkos adatok ne kerüljenek Git-be:
    - `config.json`, `credentials.json`, `token.json`, `token_gmail.json`.

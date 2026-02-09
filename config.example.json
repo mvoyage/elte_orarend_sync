@@ -8,6 +8,7 @@
   "orarend_url": "https://inform.gtk.elte.hu/index.php?site=2",
   "login_url": "",
   "login_start_url": "https://inform.gtk.elte.hu/index.php?site=0",
+  "lecture_group_letter": "", //ez a csoportod betujele
   "credentials": {
     "username": "", //ezek az iigs credentialjaid, neptun koddal nem mukodik!
     "password": "",

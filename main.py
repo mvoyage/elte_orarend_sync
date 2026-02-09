@@ -30,12 +30,14 @@ def main() -> None:
     calendar_id = ""
     calendar_name = ""
     email_cfg = {}
+    lecture_group_letter = "K"
     try:
         with open("config.json", "r", encoding="utf-8-sig") as f:
             cfg = json.load(f)
             calendar_id = (cfg.get("calendar_id") or "").strip()
             calendar_name = (cfg.get("calendar_name") or "").strip()
             email_cfg = cfg.get("email") or {}
+            lecture_group_letter = (cfg.get("lecture_group_letter") or "K").strip()
     except OSError:
         pass
 
@@ -51,7 +53,7 @@ def main() -> None:
 
     try:
         snapshot_path = str(download_orarend())
-        events = parse_snapshot(snapshot_path)
+        events = parse_snapshot(snapshot_path, lecture_group_letter=lecture_group_letter)
         if not events:
             raise RuntimeError("No events parsed from the Órarend table.")
         metrics = sync_events(events)
