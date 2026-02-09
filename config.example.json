@@ -1,0 +1,34 @@
+{
+  "_comment": "Example configuration. Copy to config.json and fill in your values.",
+  "timezone": "Europe/Budapest",
+  "calendar_id": "", 
+  "calendar_name": "",
+  "cookie": "",
+  "base_url": "https://inform.gtk.elte.hu/index.php?site=100",
+  "orarend_url": "https://inform.gtk.elte.hu/index.php?site=2",
+  "login_url": "",
+  "login_start_url": "https://inform.gtk.elte.hu/index.php?site=0",
+  "credentials": {
+    "username": "",
+    "password": "",
+    "username_field": "username_iig",
+    "password_field": "password_iig",
+    "extra_fields": {
+      "LoginType": "neptun-href",
+      "sp_language": "hu",
+      "source": "iig"
+    }
+  },
+  "snapshots_dir": "data/snapshots",
+  "keep_snapshots": 3,
+  "debug_dir": "data/debug",
+  "email": {
+    "enabled": false,
+    "send_on_failure": true,
+    "from_addr": "eltesync@example.com",
+    "to_addr": "you@example.com",
+    "subject_prefix": "ELTE GTK órarend sync",
+    "credentials_file": "credentials.json",
+    "token_file": "token_gmail.json"
+  }
+}
